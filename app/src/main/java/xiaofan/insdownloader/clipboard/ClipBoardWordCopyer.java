@@ -37,7 +37,9 @@ public class ClipBoardWordCopyer {
                 String copyedText = clipBoard.getText().toString();
                 Log.w("ClipBoardWordCopyer",copyedText);
                 if(!TextUtils.isEmpty(copyedText) && copyedText.startsWith(INS_URL)){
-                    copyUrlStack.add(copyedText);
+                    if(!copyUrlStack.contains(copyedText)){
+                        copyUrlStack.add(copyedText);
+                    }
                     showConfirmAct();
                 }
             }
