@@ -24,6 +24,18 @@ public class HttpCacheUtils {
         return new File(cachePath + File.separator + uniqueName);
     }
 
+    public static String getCachedPath(Context context) {
+        // Check if media is mounted or storage is built-in, if so, try and use external cache dir
+        // otherwise use internal cache dir
+        final String cachePath =
+                Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED ||
+                        !HttpCacheUtils.isExternalStorageRemovable() ?
+                        HttpCacheUtils.getExternalCacheDir(context).getPath() :
+                        context.getCacheDir().getPath();
+
+        return cachePath;
+    }
+
     /**
      * Check if external storage is built-in or removable.
      *

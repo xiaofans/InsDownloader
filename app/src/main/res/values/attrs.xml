@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="popup" format="reference" />
+    <attr name="toolbar_theme" format="reference" />
+    <attr name="ripple_color" format="color" />
+</resources>

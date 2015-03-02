@@ -15,7 +15,6 @@ import android.view.View;
 
 
 import java.io.File;
-import java.net.URI;
 
 import at.markushi.ui.CircleButton;
 import xiaofan.insdownloader.utils.Utils;
@@ -71,24 +70,6 @@ public class PhotoViewActivity extends ActionBarActivity implements View.OnClick
                 circleButton.setColor(palette.getVibrantColor(Color.argb(0,255,255,255)));
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_photo_view, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

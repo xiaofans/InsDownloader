@@ -5,4 +5,17 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_user_confirm">UserConfirmActivity</string>
     <string name="title_activity_photo_view">PhotoViewActivity</string>
+
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+
+    <string-array name="drawer_items">
+        <item>我的下载</item>
+        <item>使用说明</item>
+        <item>关于</item>
+        <item>退出</item>
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
