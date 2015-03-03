@@ -58,7 +58,6 @@ public class PhotoViewActivity extends ActionBarActivity implements View.OnClick
                     panningBackgroundFrameLayout.setPanningBackground(bitmap);
                     applyShareButtonColor(bitmap);
                 }
-
             });
 
     }
