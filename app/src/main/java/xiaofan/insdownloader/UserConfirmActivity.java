@@ -28,7 +28,9 @@ public class UserConfirmActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_user_confirm);
         photoUrl = getIntent().getStringExtra(INTENT_URL_PARAMS);
         showConfirmDialog();

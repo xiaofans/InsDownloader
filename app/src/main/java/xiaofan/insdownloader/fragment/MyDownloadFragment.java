@@ -3,8 +3,10 @@ package xiaofan.insdownloader.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,8 +35,11 @@ public class MyDownloadFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private ArrayList<String> downloadPaths;
+
+    private Handler handler = new Handler();
 
     public MyDownloadFragment() {
     }
@@ -70,6 +75,18 @@ public class MyDownloadFragment extends Fragment {
         mAdapter = new DownloadAdapter(downloadPaths == null ? new ArrayList<String>() : downloadPaths);
         mRecyclerView.setAdapter(mAdapter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },1000);
+            }
+        });
     }
 
 }

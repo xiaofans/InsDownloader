@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity{
     }
 
     private void setUpFragments() {
-        String downloadedPaths = HttpCacheUtils.getCachedPath(this);
+        String downloadedPaths = HttpCacheUtils.getCachedPath(this) + File.separator;
         ArrayList<String> list = new ArrayList<String>();
         File f = new File(downloadedPaths);
         if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity{
                 list.add(files[i].getAbsolutePath());
             }
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, MyDownloadFragment.newInstance(list),"MyDownloadFragment");
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, MyDownloadFragment.newInstance(list),"MyDownloadFragment").commit();
     }
 
     private void setUpActionbar() {
