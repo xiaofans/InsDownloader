@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +30,9 @@
             android:name=".service.DaemonService"
             android:enabled="true"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="xiaofan.insdownloader.DEAMON_SERVICE"/>
+            </intent-filter>
         </service>
         <service
             android:name=".service.DaemonHelperService"
@@ -50,6 +54,16 @@
             android:name=".service.DownloadService"
             android:exported="false" >
         </service>
+
+        <receiver
+            android:name=".receiver.BootCompleteReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

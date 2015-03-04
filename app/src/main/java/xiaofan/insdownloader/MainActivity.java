@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setUpActionbar();
         setUpViews();
         setUpFragments();
-        startDeamonService();
+        testService();
     }
 
     private void setUpFragments() {
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
 
-    private void startDeamonService() {
+    private void testService() {
         Intent intent = new Intent(this, DaemonService.class);
         startService(intent);
     }
