@@ -85,9 +85,12 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
             imageView.post(new Runnable() {
                 @Override
                 public void run() {
-                    Bitmap bitmap =  BitmapFactory.decodeFile(path);
-                    imageView.setImageBitmap(bitmap);
-                    applyShareButtonColor(bitmap);
+                    File f = new File(path);
+                    if(f.exists()){
+                        Bitmap bitmap =  BitmapFactory.decodeFile(path);
+                        imageView.setImageBitmap(bitmap);
+                        applyShareButtonColor(bitmap);
+                    }
                 }
 
             });

@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -21,7 +23,7 @@ import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.adapter.DownloadAdapter;
 
 
-public class MyDownloadFragment extends Fragment {
+public class MyDownloadFragment extends Fragment{
 
     public static MyDownloadFragment newInstance(ArrayList<String> downloadPaths){
         MyDownloadFragment myDownloadFragment = new MyDownloadFragment();
@@ -36,6 +38,9 @@ public class MyDownloadFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private Animation animation;
+
+
 
     private ArrayList<String> downloadPaths;
 
@@ -75,6 +80,14 @@ public class MyDownloadFragment extends Fragment {
         mAdapter = new DownloadAdapter(getActivity(),downloadPaths == null ? new ArrayList<String>() : downloadPaths);
         mRecyclerView.setAdapter(mAdapter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                setUpDownloadFragment();
+            }
+        });
+        animation = AnimationUtils.loadAnimation(getActivity(),R.anim.fab_newtab);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,6 +100,17 @@ public class MyDownloadFragment extends Fragment {
                 },1000);
             }
         });
+    }
+
+    public void setUpDownloadFragment(){
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, NewDownloadPicFragment.newInstance(),"NewDownloadPicFragment").commit();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        floatingActionButton.attachToRecyclerView(mRecyclerView);
+        floatingActionButton.setAnimation(animation);
     }
 
 }

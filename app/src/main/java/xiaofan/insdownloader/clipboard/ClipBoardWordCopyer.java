@@ -20,7 +20,7 @@ import xiaofan.insdownloader.insparser.Parser;
 public class ClipBoardWordCopyer {
     private Context context;
     private Stack<String> copyUrlStack;
-    private static final String INS_URL = "https://instagram.com";
+    public static final String INS_URL = "https://instagram.com";
 
     public ClipBoardWordCopyer(Context context) {
         this.context = context;

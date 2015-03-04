@@ -25,9 +25,18 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
         return intent;
     }
 
+    public static Intent newIntent(Context context, String picUrl, boolean isInputUrl) {
+        Intent intent = new Intent(context,UserConfirmActivity.class);
+        intent.putExtra(INTENT_URL_PARAMS,picUrl);
+        intent.putExtra(INTENT_IS_INPUT_URL,isInputUrl);
+        return intent;
+    }
+
     public static final String INTENT_URL_PARAMS = "ins_photo_url";
+    public static final String INTENT_IS_INPUT_URL = "is_input_url";
     private String photoUrl;
     private DialogFragment progressDialog;
+    private boolean isInputUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,25 +45,17 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
         }
         setContentView(R.layout.activity_user_confirm);
         photoUrl = getIntent().getStringExtra(INTENT_URL_PARAMS);
-
+        isInputUrl = getIntent().getBooleanExtra(INTENT_IS_INPUT_URL,false);
         showConfirmDialog();
     }
 
     private void showConfirmDialog() {
-     /*   new AlertDialog.Builder(this).setTitle("提示").setMessage("下载该图片?").setNegativeButton("确定",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                startService(DownloadService.newIntent(UserConfirmActivity.this,photoUrl));
-                dialog.dismiss();
-            }
-        }).setPositiveButton("取消",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).show();*/
-
-        SimpleDialogFragment.createBuilder(this, getSupportFragmentManager()).setTitle("INS下载器").setMessage("下载该图片?").setPositiveButtonText("确定").setNegativeButtonText("取消").show();
+        if(isInputUrl){
+            progressDialog = getProgressDialog();
+            startService(DownloadService.newIntent(UserConfirmActivity.this, photoUrl));
+        }else{
+            SimpleDialogFragment.createBuilder(this, getSupportFragmentManager()).setTitle("INS下载器").setMessage("下载该图片?").setPositiveButtonText("确定").setNegativeButtonText("取消").show();
+        }
     }
 
     @Subscribe
@@ -77,12 +78,12 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
 
     @Override
     public void onNegativeButtonClicked(int i) {
-
+        finish();
     }
 
     @Override
     public void onNeutralButtonClicked(int i) {
-
+        finish();
     }
 
     @Override
@@ -98,4 +99,6 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
                 .setRequestCode(534)
                 .show();
     }
+
+
 }
