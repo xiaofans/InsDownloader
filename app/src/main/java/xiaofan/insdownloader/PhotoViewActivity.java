@@ -36,7 +36,9 @@ public class PhotoViewActivity extends ActionBarActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_view);
-        getSupportActionBar().hide();
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         filePath = getIntent().getStringExtra("filePath");
         setUpViews();
         Utils.fitScreenIfNeeded(this);

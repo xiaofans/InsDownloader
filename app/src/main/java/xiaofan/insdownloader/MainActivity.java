@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity{
         File f = new File(downloadedPaths);
         if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
             File[] files = f.listFiles();
-            for(int i = 0; i < files.length;i++){
+            for(int i = files.length - 1; i >= 0;i--){
                 list.add(files[i].getAbsolutePath());
             }
         }

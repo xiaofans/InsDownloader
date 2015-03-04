@@ -72,7 +72,7 @@ public class MyDownloadFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new DownloadAdapter(downloadPaths == null ? new ArrayList<String>() : downloadPaths);
+        mAdapter = new DownloadAdapter(getActivity(),downloadPaths == null ? new ArrayList<String>() : downloadPaths);
         mRecyclerView.setAdapter(mAdapter);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.activity_main_swipe_refresh_layout);
