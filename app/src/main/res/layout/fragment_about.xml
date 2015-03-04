@@ -1,10 +1,17 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="xiaofan.insdownloader.fragment.AboutFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文艺青年必备神器\nby xiaofan \nemail:ttbzyzy@163.com"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textColor="#999999"
+        android:background="#eeeeee"
+        android:lineSpacingExtra="5dp"
+    />
 </FrameLayout>

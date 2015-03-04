@@ -29,4 +29,5 @@ dependencies {
     compile 'com.github.markushi:circlebutton:1.1'
     compile 'com.avast:android-styled-dialogs:2.1.0'
     compile 'com.melnykov:floatingactionbutton:1.2.0'
+    compile 'se.emilsjolander:stickylistheaders:2.5.2'
 }

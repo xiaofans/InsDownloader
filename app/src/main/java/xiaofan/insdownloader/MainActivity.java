@@ -17,8 +17,10 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 
+import xiaofan.insdownloader.fragment.AboutFragment;
 import xiaofan.insdownloader.fragment.MyDownloadFragment;
 import xiaofan.insdownloader.fragment.NewDownloadPicFragment;
+import xiaofan.insdownloader.fragment.UseGuideFragment;
 import xiaofan.insdownloader.service.DaemonService;
 import xiaofan.insdownloader.utils.HttpCacheUtils;
 import xiaofan.insdownloader.utils.Utils;
@@ -43,7 +45,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setUpActionbar();
         setUpViews();
         setUpFragments();
-        testService();
+        startDeamonService();
     }
 
     private void setUpFragments() {
@@ -109,7 +111,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
 
 
-    private void testService() {
+    private void startDeamonService() {
         Intent intent = new Intent(this, DaemonService.class);
         startService(intent);
     }
@@ -119,13 +121,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         drawerLayout.closeDrawers();
         switch (v.getId()){
             case R.id.tv_my_downloads:
+                toolbar.setTitle("我的下载");
                 setUpFragments();
                 break;
             case R.id.tv_use_guide:
+                toolbar.setTitle("使用说明");
+                setUpGuideFragment();
                 break;
             case R.id.tv_about:
+                toolbar.setTitle("关于");
+                setUpAboutFragment();
                 break;
         }
+    }
+
+    private void setUpGuideFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, UseGuideFragment.newInstance(),"UseGuideFragment").commit();
+    }
+
+    private void setUpAboutFragment() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, AboutFragment.newInstance(),"AboutFragment").commit();
     }
 
 }
