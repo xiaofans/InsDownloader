@@ -1,11 +1,19 @@
 package xiaofan.insdownloader.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import xiaofan.insdownloader.R;
+import xiaofan.insdownloader.fragment.MyDownloadFragment;
 
 /**
  * Created by zhaoyu on 2015/2/28.
@@ -27,5 +35,21 @@ public class Utils {
         int right = contentView.getPaddingRight() + systemBarConfig.getPixelInsetRight();
         int bottom = contentView.getPaddingBottom() + systemBarConfig.getPixelInsetBottom();
         contentView.setPadding(left,top,right,bottom);
+    }
+
+
+
+    public static List<String> getMyDownloads(Context context) {
+        String downloadedPaths = HttpCacheUtils.getCachedPath(context) + File.separator;
+        ArrayList<String> list = new ArrayList<String>();
+        File f = new File(downloadedPaths);
+        if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
+            File[] files = f.listFiles();
+            for(int i = files.length - 1; i >= 0;i--){
+                list.add(files[i].getAbsolutePath());
+            }
+        }
+
+        return list;
     }
 }

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.adapter.DownloadAdapter;
+import xiaofan.insdownloader.utils.Utils;
 
 
 public class MyDownloadFragment extends Fragment{
@@ -36,7 +37,7 @@ public class MyDownloadFragment extends Fragment{
     private RecyclerView mRecyclerView;
     private FloatingActionButton floatingActionButton;
     private RecyclerView.LayoutManager mLayoutManager;
-    private RecyclerView.Adapter mAdapter;
+    private DownloadAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Animation animation;
 
@@ -95,6 +96,7 @@ public class MyDownloadFragment extends Fragment{
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        mAdapter.setDownloadPaths(Utils.getMyDownloads(getActivity()));
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 },1000);
