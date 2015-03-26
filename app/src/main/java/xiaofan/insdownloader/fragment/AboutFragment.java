@@ -6,8 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import xiaofan.insdownloader.R;
+import xiaofan.insdownloader.utils.HttpCacheUtils;
+import xiaofan.insdownloader.utils.Utils;
 
 
 public class AboutFragment extends Fragment {
@@ -17,6 +20,9 @@ public class AboutFragment extends Fragment {
         AboutFragment aboutFragment = new AboutFragment();
         return aboutFragment;
     }
+
+    private TextView downloadPathTv;
+
     public AboutFragment() {
     }
 
@@ -24,8 +30,13 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
+        setUpViews(view);
+        return view;
     }
 
-
+    private void setUpViews(View view) {
+        downloadPathTv = (TextView) view.findViewById(R.id.sd_path_tv);
+        downloadPathTv.setText("图片下载路径:" + HttpCacheUtils.getCachedPath(getActivity()));
+    }
 }

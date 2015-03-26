@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -64,6 +65,8 @@
                 </action>
             </intent-filter>
         </receiver>
+        <meta-data android:value="YOUR_APP_KEY" android:name="55140ff3fd98c5b518000752"></meta-data>
+        <meta-data android:value="Channel ID" android:name="all"/>
     </application>
 
 </manifest>

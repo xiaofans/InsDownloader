@@ -30,4 +30,5 @@ dependencies {
     compile 'com.avast:android-styled-dialogs:2.1.0'
     compile 'com.melnykov:floatingactionbutton:1.2.0'
     compile 'se.emilsjolander:stickylistheaders:2.5.2'
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

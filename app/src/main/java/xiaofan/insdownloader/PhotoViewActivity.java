@@ -21,7 +21,7 @@ import xiaofan.insdownloader.utils.Utils;
 import xiaofan.insdownloader.view.PanningBackgroundFrameLayout;
 
 
-public class PhotoViewActivity extends ActionBarActivity implements View.OnClickListener{
+public class PhotoViewActivity extends BaseActivity implements View.OnClickListener{
 
     public static Intent newIntent(Context context,String filePath){
         Intent intent = new Intent(context,PhotoViewActivity.class);
