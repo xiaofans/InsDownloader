@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="文艺青年必备神器\nby xiaofan \nemail:ttbzyzy@163.com"
+        android:text="文艺青年必备神器\nby xiaofans \nemail:ttbzyzy@163.com"
         android:layout_gravity="center"
         android:textSize="18sp"
         android:textColor="#999999"
@@ -18,8 +18,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#999999"
+        android:textColor="#427096"
         android:background="#eeeeee"
         android:lineSpacingExtra="5dp"
+        android:layout_gravity="bottom"
+        android:padding="10dp"
     />
 </FrameLayout>

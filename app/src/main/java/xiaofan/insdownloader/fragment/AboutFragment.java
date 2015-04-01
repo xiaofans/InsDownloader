@@ -37,6 +37,6 @@ public class AboutFragment extends Fragment {
 
     private void setUpViews(View view) {
         downloadPathTv = (TextView) view.findViewById(R.id.sd_path_tv);
-        downloadPathTv.setText("图片下载路径:" + HttpCacheUtils.getCachedPath(getActivity()));
+        downloadPathTv.setText("图片存放路径:" + HttpCacheUtils.getCachedPath(getActivity()));
     }
 }
