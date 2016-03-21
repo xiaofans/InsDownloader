@@ -8,18 +8,19 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name=".InsDownloaderApp"
+        >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"
-            >
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,19 +28,15 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".service.DaemonService"
-            android:enabled="true"
-            android:exported="true" >
+        <service android:name=".service.MDaemonService" android:process=":process1">
             <intent-filter>
                 <action android:name="xiaofan.insdownloader.DEAMON_SERVICE"/>
             </intent-filter>
         </service>
-        <service
-            android:name=".service.DaemonHelperService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
+        <receiver android:name=".receiver.MDaemonReceiver" android:process=":process1"/>
+
+        <service android:name=".service.MDaemonService2" android:process=":process2"/>
+        <receiver android:name=".receiver.MDaemonReceiver2" android:process=":process2"/>
 
         <activity
             android:name=".UserConfirmActivity"
@@ -65,8 +62,13 @@
                 </action>
             </intent-filter>
         </receiver>
-        <meta-data android:value="55140ff3fd98c5b518000752" android:name="UMENG_APPKEY"/>
-        <meta-data android:value="all" android:name="UMENG_CHANNEL"/>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55140ff3fd98c5b518000752" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="all" />
     </application>
 
 </manifest>

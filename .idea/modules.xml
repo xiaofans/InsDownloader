@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InsDownloader.iml" filepath="$PROJECT_DIR$/InsDownloader.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thirdpartlibrary/daemonservice/daemonservice.iml" filepath="$PROJECT_DIR$/thirdpartlibrary/daemonservice/daemonservice.iml" />
     </modules>
   </component>
 </project>
-

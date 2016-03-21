@@ -3,8 +3,6 @@ package xiaofan.insdownloader.clipboard;
 import android.annotation.TargetApi;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,7 +10,6 @@ import android.util.Log;
 import java.util.Stack;
 
 import xiaofan.insdownloader.UserConfirmActivity;
-import xiaofan.insdownloader.insparser.Parser;
 
 /**
  * Created by zhaoyu on 2015/2/27.
@@ -20,7 +17,7 @@ import xiaofan.insdownloader.insparser.Parser;
 public class ClipBoardWordCopyer {
     private Context context;
     private Stack<String> copyUrlStack;
-    public static final String INS_URL = "https://instagram.com";
+    public static final String INS_URL = "instagram.com";
 
     public ClipBoardWordCopyer(Context context) {
         this.context = context;
@@ -36,7 +33,7 @@ public class ClipBoardWordCopyer {
             public void onPrimaryClipChanged() {
                 String copyedText = clipBoard.getText().toString();
                 Log.w("ClipBoardWordCopyer",copyedText);
-                if(!TextUtils.isEmpty(copyedText) && copyedText.startsWith(INS_URL)){
+                if(!TextUtils.isEmpty(copyedText) && copyedText.contains(INS_URL)){
                     if(!copyUrlStack.contains(copyedText)){
                         copyUrlStack.add(copyedText);
                     }

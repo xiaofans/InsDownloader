@@ -1,1 +1,3 @@
 include ':app'
+include ':daemonservice'
+project(':daemonservice').projectDir = new File('thirdpartlibrary/daemonservice')

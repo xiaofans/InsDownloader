@@ -15,7 +15,6 @@ import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.UserConfirmActivity;
 import xiaofan.insdownloader.clipboard.ClipBoardWordCopyer;
 
-
 public class NewDownloadPicFragment extends Fragment implements View.OnClickListener{
 
     public static NewDownloadPicFragment newInstance(){
@@ -59,8 +58,7 @@ public class NewDownloadPicFragment extends Fragment implements View.OnClickList
             Toast.makeText(getActivity(),"图片地址不能为空",Toast.LENGTH_LONG).show();
             return;
         }
-
-        if(!picUrl.startsWith(ClipBoardWordCopyer.INS_URL)){
+        if(!picUrl.contains(ClipBoardWordCopyer.INS_URL)){
             Toast.makeText(getActivity(),"输入的地址不是INS程序的",Toast.LENGTH_LONG).show();
             return;
         }

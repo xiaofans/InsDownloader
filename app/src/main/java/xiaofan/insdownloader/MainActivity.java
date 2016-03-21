@@ -19,11 +19,9 @@ import java.util.ArrayList;
 
 import xiaofan.insdownloader.fragment.AboutFragment;
 import xiaofan.insdownloader.fragment.MyDownloadFragment;
-import xiaofan.insdownloader.fragment.NewDownloadPicFragment;
 import xiaofan.insdownloader.fragment.UseGuideFragment;
-import xiaofan.insdownloader.service.DaemonService;
+import xiaofan.insdownloader.service.MDaemonService;
 import xiaofan.insdownloader.utils.HttpCacheUtils;
-import xiaofan.insdownloader.utils.Utils;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -45,7 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setUpActionbar();
         setUpViews();
         setUpFragments();
-        testService();
+        startService(new Intent(MainActivity.this, MDaemonService.class));
     }
 
     private void setUpFragments() {
@@ -109,12 +107,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         mDrawerToggle.syncState();
     }
 
-
-
-    private void testService() {
-        Intent intent = new Intent(this, DaemonService.class);
-        startService(intent);
-    }
 
     @Override
     public void onClick(View v) {
