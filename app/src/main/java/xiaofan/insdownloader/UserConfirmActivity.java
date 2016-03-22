@@ -14,7 +14,7 @@ import com.squareup.otto.Subscribe;
 
 import xiaofan.insdownloader.events.AllEvents;
 import xiaofan.insdownloader.service.DownloadService;
-
+import xiaofan.insdownloader.service.ProgressInfo;
 
 public class UserConfirmActivity extends BaseActivity implements ISimpleDialogListener {
 
@@ -35,7 +35,7 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
     public static final String INTENT_URL_PARAMS = "ins_photo_url";
     public static final String INTENT_IS_INPUT_URL = "is_input_url";
     private String photoUrl;
-    private DialogFragment progressDialog;
+    private DownloadProgressDialog progressDialog;
     private boolean isInputUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,8 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
 
     private void showConfirmDialog() {
         if(isInputUrl){
-            progressDialog = getProgressDialog();
+            progressDialog = new DownloadProgressDialog();
+            progressDialog.show(getSupportFragmentManager(),"pbc");
             startService(DownloadService.newIntent(UserConfirmActivity.this, photoUrl));
         }else{
             SimpleDialogFragment.createBuilder(this, getSupportFragmentManager()).setTitle("INS下载器").setMessage("下载该图片?").setPositiveButtonText("确定").setNegativeButtonText("取消").show();
@@ -76,6 +77,16 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
         finish();
     }
 
+    @Subscribe
+    public void downloadProgress(AllEvents.DownloadStatusEvent statusEvent){
+        if(statusEvent.status == AllEvents.DownloadStatusEvent.STATE_PARSE_URL){
+          progressDialog.enableParseLoading();
+        }else{
+          if(statusEvent.progressInfo == null) statusEvent.progressInfo = new ProgressInfo(0,0,0);
+            progressDialog.setProgressInfo(statusEvent.progressInfo);
+        }
+    }
+
     @Override
     public void onNegativeButtonClicked(int i) {
         finish();
@@ -88,17 +99,12 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
 
     @Override
     public void onPositiveButtonClicked(int i) {
-        progressDialog = getProgressDialog();
+        progressDialog = new DownloadProgressDialog();
+        progressDialog.show(getSupportFragmentManager(),"pbc");
         startService(DownloadService.newIntent(UserConfirmActivity.this, photoUrl));
     }
 
-    public DialogFragment getProgressDialog(){
-        return  ProgressDialogFragment.createBuilder(this, getSupportFragmentManager())
-                .setMessage("下载中")
-                .setCancelable(false)
-                .setRequestCode(534)
-                .show();
-    }
+
 
 
 }

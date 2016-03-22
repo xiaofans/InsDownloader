@@ -22,6 +22,7 @@
 
     <style name="ProgressBarAppTheme" parent="android:Widget.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/apptheme_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/apptheme_progress_indeterminate_horizontal_holo_light</item>
         <item name="android:minHeight">16dip</item>
         <item name="android:maxHeight">16dip</item>
     </style>

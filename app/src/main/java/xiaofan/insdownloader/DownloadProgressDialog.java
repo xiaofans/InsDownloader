@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.avast.android.dialogs.core.BaseDialogFragment;
+import xiaofan.insdownloader.service.ProgressInfo;
 
 /**
  * Created by dazhaoyu on 2016/3/22.
@@ -32,12 +33,20 @@ public class DownloadProgressDialog extends BaseDialogFragment{
   }
 
 
-  public void setTotalInfo(String totalSize){
-    downloadSizeTv.setText(totalSize);
+
+
+  public void setProgressInfo(ProgressInfo progressInfo){
+    progressBar.setIndeterminate(false);
+    progressBar.setProgress(progressInfo.progress);
+    downloadProgressTv.setText((progressInfo.downloadedBytes / 1024) + "kb");
+    downloadSizeTv.setText((progressInfo.totalBytes / 1024) +"kb");
   }
 
-  public void setProgressInfo(int progressInfo){
-    progressBar.setProgress(progressInfo);
-    downloadProgressTv.setText(progressInfo + "%");
+  public void enableParseLoading(){
+    progressBar.setIndeterminate(true);
+    downloadProgressTv.setText("");
+    downloadSizeTv.setText("");
   }
+
+
 }
