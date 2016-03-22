@@ -17,6 +17,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import xiaofan.insdownloader.events.AllEvents;
 import xiaofan.insdownloader.events.EventBus;
+import xiaofan.insdownloader.insparser.MediaData;
 import xiaofan.insdownloader.insparser.Parser;
 import xiaofan.insdownloader.utils.HttpCacheUtils;
 
@@ -29,13 +30,14 @@ public class DownloadService extends IntentService {
         return intent;
     }
 
-    public static final int BUFFER_SIZE = 1024;
+    public static final int BUFFER_SIZE = 1024 * 4;
 
     private long mContentLength;
     private long mCurrentBytes;
 
     private String actualUrl;
     private File downloadPath;
+    private MediaData mediaData;
 
 
     public DownloadService() {
@@ -48,7 +50,8 @@ public class DownloadService extends IntentService {
             String url  = intent.getStringExtra("url");
             // step1. 计算出真实地址
             EventBus.post(new AllEvents.DownloadStatusEvent(AllEvents.DownloadStatusEvent.STATE_PARSE_URL));
-            actualUrl = Parser.parseUrl(url);
+            mediaData = Parser.parseMedia(url); // TODO 做失败处理
+            actualUrl = mediaData.url;
 
             EventBus.post(new AllEvents.DownloadStatusEvent(AllEvents.DownloadStatusEvent.STATE_DOWNLOADING));
             // step2.计算出下载路径
