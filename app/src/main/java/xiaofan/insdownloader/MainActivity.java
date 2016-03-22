@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private void setUpActionbar() {
         // Toolbar
-        toolbar = (Toolbar) findViewById(R.id.action_bar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("INS下载器");
         toolbar.setBackgroundColor(Color.argb(255,69,115,153));
         setSupportActionBar(toolbar);

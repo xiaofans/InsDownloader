@@ -4,6 +4,7 @@
         <item name="popup">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="toolbar_theme">@style/overflow_white1</item>
         <item name="ripple_color">@android:color/white</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarAppTheme</item>
     </style>
 
     <style name="overflow_white1" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -17,5 +18,11 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="ProgressBarAppTheme" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/apptheme_progress_horizontal_holo_light</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
     </style>
 </resources>
