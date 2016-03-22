@@ -16,12 +16,12 @@ public class DownloadProgressDialog extends BaseDialogFragment{
   private ProgressBar progressBar;
   private TextView downloadProgressTv;
   private TextView downloadSizeTv;
+  private TextView messageTv;
   @Override
   protected Builder build(Builder builder) {
     view = LayoutInflater.from(getActivity()).inflate(R.layout.layout_download_progress,null);
     setUpViews();
     builder.setTitle("提示");
-    builder.setMessage("下载中...");
     builder.setView(view);
     return builder;
   }
@@ -30,22 +30,27 @@ public class DownloadProgressDialog extends BaseDialogFragment{
     progressBar = (ProgressBar) view.findViewById(R.id.downladProgressBar);
     downloadProgressTv = (TextView) view.findViewById(R.id.downloadPercentTv);
     downloadSizeTv = (TextView) view.findViewById(R.id.totalSizeTv);
+    messageTv = (TextView) view.findViewById(R.id.messageTv);
   }
-
-
-
 
   public void setProgressInfo(ProgressInfo progressInfo){
     progressBar.setIndeterminate(false);
+    if(progressInfo.progress == 0){
+      downloadProgressTv.setText("");
+      downloadSizeTv.setText("");
+    }else{
+      downloadProgressTv.setText((progressInfo.downloadedBytes / 1024) + "kb");
+      downloadSizeTv.setText((progressInfo.totalBytes / 1024) +"kb");
+    }
     progressBar.setProgress(progressInfo.progress);
-    downloadProgressTv.setText((progressInfo.downloadedBytes / 1024) + "kb");
-    downloadSizeTv.setText((progressInfo.totalBytes / 1024) +"kb");
+    messageTv.setText("下载中...");
   }
 
   public void enableParseLoading(){
     progressBar.setIndeterminate(true);
     downloadProgressTv.setText("");
     downloadSizeTv.setText("");
+    messageTv.setText("解析图片地址...");
   }
 
 

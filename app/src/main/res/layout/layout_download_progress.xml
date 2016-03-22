@@ -3,13 +3,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
+    android:padding="10dp"
     >
+    <TextView
+        android:id="@+id/messageTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/drawer_item_selected"
+        android:text="解析图片地址中..."
+        />
     <ProgressBar
         android:id="@+id/downladProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ProgressBarAppTheme"
+        android:layout_below="@id/messageTv"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
     />
     <TextView
         android:id="@+id/downloadPercentTv"
@@ -27,5 +38,6 @@
         android:textColor="@color/drawer_item_selected"
         android:layout_below="@id/downladProgressBar"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
     />
 </RelativeLayout>
