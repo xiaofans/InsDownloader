@@ -5,20 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import android.util.Log;
 import java.io.File;
 import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import java.net.URLConnection;
-import xiaofan.insdownloader.downloadmanager.DownloadManager;
 import xiaofan.insdownloader.events.AllEvents;
 import xiaofan.insdownloader.events.EventBus;
 import xiaofan.insdownloader.insparser.Parser;
