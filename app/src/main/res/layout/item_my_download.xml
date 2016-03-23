@@ -21,14 +21,29 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
             />
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_gravity="right|bottom"
+              >
             <at.markushi.ui.CircleButton
                 android:id="@+id/btn_share"
-                android:layout_width="80dip"
-                android:layout_height="80dip"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
                 android:src="@drawable/ic_action_share"
                 app:cb_color="@color/drawer_item_selected"
-                app:cb_pressedRingWidth="16dip"
-                android:layout_gravity="center"
-            />
+                app:cb_pressedRingWidth="6dip"
+                />
+            <at.markushi.ui.CircleButton
+                android:id="@+id/btn_delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_action_delete"
+                app:cb_color="@color/drawer_item_selected"
+                app:cb_pressedRingWidth="6dp"
+                android:layout_marginLeft="5dp"
+                />
+          </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

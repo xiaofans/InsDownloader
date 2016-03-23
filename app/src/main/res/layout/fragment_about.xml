@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="xiaofan.insdownloader.fragment.AboutFragment">
+    tools:context="xiaofan.insdownloader.fragment.AboutFragment"
+    android:background="#eeeeee"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -10,7 +12,6 @@
         android:layout_gravity="center"
         android:textSize="18sp"
         android:textColor="#999999"
-        android:background="#eeeeee"
         android:lineSpacingExtra="5dp"
     />
     <TextView
@@ -19,7 +20,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="#427096"
-        android:background="#eeeeee"
         android:lineSpacingExtra="5dp"
         android:layout_gravity="bottom"
         android:padding="10dp"

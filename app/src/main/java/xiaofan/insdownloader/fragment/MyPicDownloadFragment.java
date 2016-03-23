@@ -19,6 +19,7 @@ import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import xiaofan.insdownloader.AddDownloadActivity;
 import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.adapter.DownloadAdapter;
 import xiaofan.insdownloader.utils.Utils;
@@ -107,7 +108,8 @@ public class MyPicDownloadFragment extends Fragment{
     }
 
     public void setUpDownloadFragment(){
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, NewDownloadPicFragment.newInstance(),"NewDownloadPicFragment").commit();
+        //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, NewDownloadPicFragment.newInstance(),"NewDownloadPicFragment").commit();
+        startActivity(AddDownloadActivity.newIntent(getActivity()));
     }
 
     @Override

@@ -34,12 +34,12 @@ public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdap
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_download,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_video_download,parent,false);
         return ViewHolder.newInstance(view, context);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final String path = downloadPaths.get(position);
         holder.displayImage(path);
         holder.circleButton.setOnClickListener(new View.OnClickListener(){
@@ -61,6 +61,24 @@ public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdap
                 context.startActivity(intent);
             }
         });
+        holder.deleteButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override public void onClick(View v) {
+                String path = downloadPaths.get(position);
+                new File(path).delete();
+                downloadPaths.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
+        holder.playButton.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Uri uri = Uri.parse(path);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(uri, "video/mp4");
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -71,17 +89,23 @@ public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdap
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
         private final CircleButton circleButton;
+        private final CircleButton deleteButton;
+        private final CircleButton playButton;
         private Context context;
         public static ViewHolder newInstance(View itemView,Context context) {
             ImageView imageView = (ImageView) itemView.findViewById(R.id.download_pic_iv);
             CircleButton circleButton = (CircleButton) itemView.findViewById(R.id.btn_share);
-            return new ViewHolder(itemView,imageView,circleButton,context);
+            CircleButton deleteButton = (CircleButton) itemView.findViewById(R.id.btn_delete);
+            CircleButton playButton = (CircleButton) itemView.findViewById(R.id.btn_play);
+            return new ViewHolder(itemView,imageView,circleButton,deleteButton,playButton,context);
         }
 
-        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,Context context) {
+        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,CircleButton deleteButton,CircleButton playButton,Context context) {
             super(itemView);
             this.imageView = imageView;
             this.circleButton = circleButton;
+            this.deleteButton = deleteButton;
+            this.playButton = playButton;
             this.context = context;
         }
 

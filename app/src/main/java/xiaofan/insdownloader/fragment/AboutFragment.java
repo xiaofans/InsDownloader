@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.utils.HttpCacheUtils;
-import xiaofan.insdownloader.utils.Utils;
 
 
 public class AboutFragment extends Fragment {
@@ -37,6 +36,6 @@ public class AboutFragment extends Fragment {
 
     private void setUpViews(View view) {
         downloadPathTv = (TextView) view.findViewById(R.id.sd_path_tv);
-        downloadPathTv.setText("图片存放路径:" + HttpCacheUtils.getCachedPath(getActivity()));
+        downloadPathTv.setText("图片及视频存放路径:" + HttpCacheUtils.getCachedPath(getActivity()));
     }
 }

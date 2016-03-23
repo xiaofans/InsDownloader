@@ -42,7 +42,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final String path = downloadPaths.get(position);
         holder.displayImage(path);
         holder.circleButton.setOnClickListener(new View.OnClickListener(){
@@ -60,6 +60,16 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
                 context.startActivity(PhotoViewActivity.newIntent(context,path));
             }
         });
+
+        holder.deleteButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override public void onClick(View v) {
+                String path = downloadPaths.get(position);
+                new File(path).delete();
+                downloadPaths.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -70,17 +80,20 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
         private final CircleButton circleButton;
+        private final CircleButton deleteButton;
         private Context context;
         public static ViewHolder newInstance(View itemView,Context context) {
             ImageView imageView = (ImageView) itemView.findViewById(R.id.download_pic_iv);
             CircleButton circleButton = (CircleButton) itemView.findViewById(R.id.btn_share);
-            return new ViewHolder(itemView,imageView,circleButton,context);
+            CircleButton deleteButton = (CircleButton) itemView.findViewById(R.id.btn_delete);
+            return new ViewHolder(itemView,imageView,circleButton,deleteButton,context);
         }
 
-        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,Context context) {
+        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,CircleButton deleteButton,Context context) {
             super(itemView);
             this.imageView = imageView;
             this.circleButton = circleButton;
+            this.deleteButton = deleteButton;
             this.context = context;
         }
 
