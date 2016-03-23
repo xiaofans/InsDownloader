@@ -33,7 +33,6 @@ public class Parser {
 
 
     public static MediaData parseMedia(String url){
-        //<meta property="og:video" content="http://scontent-sin1-1.cdninstagram.com/t50.2886-16/11669168_841650245913624_887345504_n.mp4">
         try {
             Document document = Jsoup.connect(url).userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36").timeout(30 * 1000).get();
             Elements imageElements = document.getElementsByAttributeValue("property","og:image");

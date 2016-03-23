@@ -3,6 +3,7 @@ package xiaofan.insdownloader.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -39,17 +40,24 @@ public class Utils {
 
 
 
-    public static List<String> getMyDownloads(Context context) {
+    public static List<String> getMyDownloads(Context context,List<String> videos) {
+        if(videos == null){
+            videos = new ArrayList<String>();
+        }
         String downloadedPaths = HttpCacheUtils.getCachedPath(context) + File.separator;
         ArrayList<String> list = new ArrayList<String>();
         File f = new File(downloadedPaths);
         if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
             File[] files = f.listFiles();
             for(int i = files.length - 1; i >= 0;i--){
-                list.add(files[i].getAbsolutePath());
+                Log.w("Utils","path is: " + files[i].getAbsolutePath());
+                if(files[i].getAbsolutePath().endsWith(".mp4")){
+                    videos.add(files[i].getAbsolutePath());
+                }else{
+                    list.add(files[i].getAbsolutePath());
+                }
             }
         }
-
         return list;
     }
 }

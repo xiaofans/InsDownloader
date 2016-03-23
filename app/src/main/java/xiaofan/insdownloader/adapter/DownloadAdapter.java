@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_download,parent,false);
-        return ViewHolder.newInstance(view);
+        return ViewHolder.newInstance(view,context);
     }
 
     @Override
@@ -68,21 +69,23 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
         private final CircleButton circleButton;
-
-        public static ViewHolder newInstance(View itemView) {
+        private Context context;
+        public static ViewHolder newInstance(View itemView,Context context) {
             ImageView imageView = (ImageView) itemView.findViewById(R.id.download_pic_iv);
             CircleButton circleButton = (CircleButton) itemView.findViewById(R.id.btn_share);
-            return new ViewHolder(itemView,imageView,circleButton);
+            return new ViewHolder(itemView,imageView,circleButton,context);
         }
 
-        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton) {
+        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,Context context) {
             super(itemView);
             this.imageView = imageView;
             this.circleButton = circleButton;
+            this.context = context;
         }
 
         public void displayImage(final String path){
-            imageView.post(new Runnable() {
+            Picasso.with(context).load(new File(path)).into(imageView);
+           /* imageView.post(new Runnable() {
                 @Override
                 public void run() {
                     File f = new File(path);
@@ -93,18 +96,16 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
                     }
                 }
 
-            });
+            });*/
         }
 
         private void applyShareButtonColor(Bitmap bitmap) {
-            Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener() {
-                @Override
-                public void onGenerated(Palette palette) {
+            Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
+                @Override public void onGenerated(Palette palette) {
                     circleButton.setColor(palette.getVibrantColor(Color.argb(0, 255, 255, 255)));
                 }
             });
         }
-
     }
 
     private void shareAction(String path) {

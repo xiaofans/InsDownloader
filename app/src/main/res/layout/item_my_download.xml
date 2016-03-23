@@ -26,7 +26,7 @@
                     android:layout_width="80dip"
                     android:layout_height="80dip"
                     android:src="@drawable/ic_action_share"
-                    app:cb_color="#99CC00"
+                    app:cb_color="@color/drawer_item_selected"
                     app:cb_pressedRingWidth="16dip"
                     android:layout_gravity="center"
                 />

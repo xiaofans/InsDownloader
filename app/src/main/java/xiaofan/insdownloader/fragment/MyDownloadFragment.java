@@ -19,6 +19,7 @@ import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import java.util.List;
 import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.adapter.DownloadAdapter;
 import xiaofan.insdownloader.utils.Utils;
@@ -40,6 +41,7 @@ public class MyDownloadFragment extends Fragment{
     private DownloadAdapter mAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Animation animation;
+    private List<String> videoPaths;
 
 
 
@@ -96,7 +98,8 @@ public class MyDownloadFragment extends Fragment{
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mAdapter.setDownloadPaths(Utils.getMyDownloads(getActivity()));
+                        videoPaths = new ArrayList<String>();
+                        mAdapter.setDownloadPaths(Utils.getMyDownloads(getActivity(),videoPaths));
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 },1000);

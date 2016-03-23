@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+import android.widget.Toast;
 import java.io.File;
 
 import at.markushi.ui.CircleButton;
@@ -88,5 +88,6 @@ public class PhotoViewActivity extends BaseActivity implements View.OnClickListe
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(filePath)));
         shareIntent.setType("image/jpeg");
         startActivity(Intent.createChooser(shareIntent, "分享到"));
+
     }
 }

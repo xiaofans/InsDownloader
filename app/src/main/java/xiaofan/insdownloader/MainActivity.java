@@ -53,7 +53,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
             File[] files = f.listFiles();
             for(int i = files.length - 1; i >= 0;i--){
-                list.add(files[i].getAbsolutePath());
+                String filePath = files[i].getAbsolutePath();
+                if(!filePath.endsWith(".mp4")){
+                    list.add(files[i].getAbsolutePath());
+                }
             }
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, MyDownloadFragment.newInstance(list),"MyDownloadFragment").commit();
