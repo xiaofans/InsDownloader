@@ -159,7 +159,7 @@ public class DownloadService extends IntentService {
     }
 
     private void updateDownloadComplete() {
-        EventBus.post(new AllEvents.DownloadSuccessEvent(downloadPath.getAbsolutePath()));
+        EventBus.post(new AllEvents.DownloadSuccessEvent(downloadPath.getAbsolutePath(),!mediaData.isImage));
     }
 
     private void updateDownloadFailed() {
@@ -231,7 +231,7 @@ public class DownloadService extends IntentService {
             }
         }
         if(isSuccess){
-            EventBus.post(new AllEvents.DownloadSuccessEvent(file.getAbsolutePath()));
+            //EventBus.post(new AllEvents.DownloadSuccessEvent(file.getAbsolutePath()));
         }else{
             EventBus.post(new AllEvents.DownloadFailureEvent());
         }

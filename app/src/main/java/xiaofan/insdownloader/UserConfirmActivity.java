@@ -64,7 +64,11 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
         if(progressDialog != null){
             progressDialog.dismiss();
         }
-        startActivity(PhotoViewActivity.newIntent(this, successEvent.downloadedFilePath));
+        if(successEvent.isVideo){
+            Toast.makeText(this,"下载已完成，请打开下载器查看",Toast.LENGTH_LONG).show();
+        }else{
+            startActivity(PhotoViewActivity.newIntent(this, successEvent.downloadedFilePath));
+        }
         finish();
     }
 

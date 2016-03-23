@@ -9,10 +9,12 @@ public class AllEvents {
     // 下载图片事件
     public  static class DownloadSuccessEvent{
         public String downloadedFilePath;
+       public  boolean isVideo;
 
-        public DownloadSuccessEvent(String downloadedFilePath) {
-            this.downloadedFilePath = downloadedFilePath;
-        }
+      public DownloadSuccessEvent(String downloadedFilePath, boolean isVideo) {
+        this.downloadedFilePath = downloadedFilePath;
+        this.isVideo = isVideo;
+      }
     }
 
     public  static class DownloadFailureEvent{
