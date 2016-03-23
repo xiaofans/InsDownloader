@@ -3,34 +3,31 @@ package xiaofan.insdownloader.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.support.v7.graphics.Palette;
+import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
+import at.markushi.ui.CircleButton;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import at.markushi.ui.CircleButton;
 import xiaofan.insdownloader.PhotoViewActivity;
 import xiaofan.insdownloader.R;
 
 /**
  * Created by zhaoyu on 2015/3/2.
  */
-public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHolder>{
+public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdapter.ViewHolder>{
 
     private List<String> downloadPaths;
     private Context context;
 
-    public DownloadAdapter(Context context,List<String> downloadPaths) {
+    public DownloadVideoAdapter(Context context, List<String> downloadPaths) {
         this.downloadPaths = downloadPaths;
         this.context = context;
     }
@@ -38,7 +35,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_download,parent,false);
-        return ViewHolder.newInstance(view,context);
+        return ViewHolder.newInstance(view, context);
     }
 
     @Override
@@ -57,7 +54,11 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
 
             @Override
             public void onClick(View v) {
-                context.startActivity(PhotoViewActivity.newIntent(context,path));
+              //  context.startActivity(PhotoViewActivity.newIntent(context,path));
+                Uri uri = Uri.parse(path);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(uri, "video/mp4");
+                context.startActivity(intent);
             }
         });
     }
@@ -85,7 +86,9 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
         }
 
         public void displayImage(final String path){
-            Picasso.with(context).load(new File(path)).into(imageView);
+            Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(path,
+                MediaStore.Video.Thumbnails.MINI_KIND);
+            imageView.setImageBitmap(bitmap);
         }
 
     }
@@ -94,7 +97,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));
-        shareIntent.setType("image/jpeg");
+        shareIntent.setType("video/*");
         context.startActivity(Intent.createChooser(shareIntent, "分享到"));
     }
 

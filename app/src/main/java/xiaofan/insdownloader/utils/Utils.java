@@ -3,7 +3,6 @@ package xiaofan.insdownloader.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -12,9 +11,6 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import xiaofan.insdownloader.R;
-import xiaofan.insdownloader.fragment.MyDownloadFragment;
 
 /**
  * Created by zhaoyu on 2015/2/28.
@@ -40,7 +36,7 @@ public class Utils {
 
 
 
-    public static List<String> getMyDownloads(Context context,List<String> videos) {
+    public static ArrayList<String> getMyDownloads(Context context,ArrayList<String> videos) {
         if(videos == null){
             videos = new ArrayList<String>();
         }
@@ -50,7 +46,6 @@ public class Utils {
         if(f.exists() && f.listFiles() != null && f.listFiles().length > 0){
             File[] files = f.listFiles();
             for(int i = files.length - 1; i >= 0;i--){
-                Log.w("Utils","path is: " + files[i].getAbsolutePath());
                 if(files[i].getAbsolutePath().endsWith(".mp4")){
                     videos.add(files[i].getAbsolutePath());
                 }else{
