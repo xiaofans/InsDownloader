@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import xiaofan.insdownloader.PhotoViewActivity;
 import xiaofan.insdownloader.R;
+import xiaofan.insdownloader.videoframemanager.VideoFrameView;
 
 /**
  * Created by zhaoyu on 2015/3/2.
@@ -87,20 +88,20 @@ public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imageView;
+        private final VideoFrameView imageView;
         private final CircleButton circleButton;
         private final CircleButton deleteButton;
         private final CircleButton playButton;
         private Context context;
         public static ViewHolder newInstance(View itemView,Context context) {
-            ImageView imageView = (ImageView) itemView.findViewById(R.id.download_pic_iv);
+            VideoFrameView imageView = (VideoFrameView) itemView.findViewById(R.id.download_pic_iv);
             CircleButton circleButton = (CircleButton) itemView.findViewById(R.id.btn_share);
             CircleButton deleteButton = (CircleButton) itemView.findViewById(R.id.btn_delete);
             CircleButton playButton = (CircleButton) itemView.findViewById(R.id.btn_play);
             return new ViewHolder(itemView,imageView,circleButton,deleteButton,playButton,context);
         }
 
-        public ViewHolder(View itemView,ImageView imageView,CircleButton circleButton,CircleButton deleteButton,CircleButton playButton,Context context) {
+        public ViewHolder(View itemView,VideoFrameView imageView,CircleButton circleButton,CircleButton deleteButton,CircleButton playButton,Context context) {
             super(itemView);
             this.imageView = imageView;
             this.circleButton = circleButton;
@@ -110,9 +111,10 @@ public class DownloadVideoAdapter extends RecyclerView.Adapter<DownloadVideoAdap
         }
 
         public void displayImage(final String path){
-            Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(path,
+           /* Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(path,
                 MediaStore.Video.Thumbnails.MINI_KIND);
-            imageView.setImageBitmap(bitmap);
+            imageView.setImageBitmap(bitmap);*/
+            imageView.setVideoPath(path);
         }
 
     }

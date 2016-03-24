@@ -14,7 +14,7 @@
             android:layout_height="200dp"
             card_view:cardCornerRadius="4dp">
 
-            <ImageView
+            <xiaofan.insdownloader.videoframemanager.VideoFrameView
                 android:id="@+id/download_pic_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
