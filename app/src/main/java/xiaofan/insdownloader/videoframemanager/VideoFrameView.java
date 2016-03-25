@@ -44,11 +44,8 @@ public class VideoFrameView extends ImageView{
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-    // If the image isn't already drawn, and the URL is set
     if ((!mIsDrawn) && (mVideoPath != null)) {
-      // Starts downloading this View, using the current cache setting
       mDecodeThread = VideoFrameManager.startDecode(this);
-      // After successfully downloading the image, this marks that it's available.
       mIsDrawn = true;
     }
   }

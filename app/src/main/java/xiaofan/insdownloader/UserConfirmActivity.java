@@ -52,6 +52,7 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
     private void showConfirmDialog() {
         if(isInputUrl){
             progressDialog = new DownloadProgressDialog();
+            progressDialog.setCancelable(false);
             progressDialog.show(getSupportFragmentManager(),"pbc");
             startService(DownloadService.newIntent(UserConfirmActivity.this, photoUrl));
         }else{
@@ -104,6 +105,7 @@ public class UserConfirmActivity extends BaseActivity implements ISimpleDialogLi
     @Override
     public void onPositiveButtonClicked(int i) {
         progressDialog = new DownloadProgressDialog();
+        progressDialog.setCancelable(false);
         progressDialog.show(getSupportFragmentManager(),"pbc");
         startService(DownloadService.newIntent(UserConfirmActivity.this, photoUrl));
     }

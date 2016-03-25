@@ -25,7 +25,6 @@ public class VideoFrameTask implements VideoFrameDecodeRunnable.TaskRunnableDeco
 
   void initializeDecoderTask(VideoFrameManager videoFrameManager,VideoFrameView videoFrameView){
     sVideoFrameManager = videoFrameManager;
-    // Instantiates the weak reference to the incoming view
     mVideoWeakRef = new WeakReference<VideoFrameView>(videoFrameView);
     mVideoPath = videoFrameView.getVideoPath();
   }
@@ -55,7 +54,11 @@ public class VideoFrameTask implements VideoFrameDecodeRunnable.TaskRunnableDeco
 
   @Override
   public void handleDecodeState(int state) {
-    sVideoFrameManager.handleState(this,VideoFrameManager.DECODE_FINISHED);
+    if(state == VideoFrameDecodeRunnable.STATE_DECODE_START){
+      sVideoFrameManager.handleState(this,VideoFrameManager.DECODE_STARTED);
+    }else if(state == VideoFrameDecodeRunnable.STATE_DECODE_COMPLETE){
+      sVideoFrameManager.handleState(this,VideoFrameManager.DECODE_FINISHED);
+    }
   }
 
   @Override

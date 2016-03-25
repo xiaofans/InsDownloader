@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 public class VideoFrameDecodeRunnable implements Runnable{
 
   static final int STATE_DECODE_COMPLETE = 0;
+  static final int STATE_DECODE_START = 1;
 
   final TaskRunnableDecodeMethods mVideoFrameTask;
   interface TaskRunnableDecodeMethods {
@@ -26,8 +27,8 @@ public class VideoFrameDecodeRunnable implements Runnable{
   @Override
   public void run() {
     mVideoFrameTask.setDecodeThread(Thread.currentThread());
-    // Moves the current Thread into the background
     android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+    mVideoFrameTask.handleDecodeState(STATE_DECODE_START);
     Bitmap bitmap = ThumbnailUtils.createVideoThumbnail(mVideoFrameTask.getVideoPath(), MediaStore.Video.Thumbnails.MINI_KIND);
     mVideoFrameTask.setFrameBitmap(bitmap);
     mVideoFrameTask.handleDecodeState(STATE_DECODE_COMPLETE);

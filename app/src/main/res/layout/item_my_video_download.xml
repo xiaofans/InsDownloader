@@ -41,6 +41,7 @@
                     android:src="@drawable/ic_play"
                     app:cb_color="@color/drawer_item_selected"
                     app:cb_pressedRingWidth="6dip"
+                    android:visibility="gone"
                 />
               <at.markushi.ui.CircleButton
                   android:id="@+id/btn_delete"
