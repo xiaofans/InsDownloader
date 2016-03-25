@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="文艺青年必备神器\nby xiaofans \nemail:ttbzyzy@163.com"
+        android:text="文艺青年必备神器\nby xiaofans \nemail:ttbzyzy@163.com \n交流群:549986022"
         android:layout_gravity="center"
         android:textSize="18sp"
         android:textColor="#999999"
