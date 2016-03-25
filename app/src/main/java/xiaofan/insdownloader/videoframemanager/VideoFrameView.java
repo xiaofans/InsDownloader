@@ -36,6 +36,8 @@ public class VideoFrameView extends ImageView{
 
   @Override
   protected void onDetachedFromWindow() {
+    setVideoPath(null);
+    mDecodeThread = null;
     super.onDetachedFromWindow();
   }
 
