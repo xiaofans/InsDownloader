@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private void setUpActionbar() {
         // Toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("INS下载器");
+        toolbar.setTitle(getResources().getString(R.string.app_name));
         toolbar.setBackgroundColor(Color.argb(255,69,115,153));
         setSupportActionBar(toolbar);
     }
@@ -101,15 +101,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         drawerLayout.closeDrawers();
         switch (v.getId()){
             case R.id.tv_my_downloads:
-                toolbar.setTitle("我的下载");
+                toolbar.setTitle(getResources().getString(R.string.my_download));
                 setUpFragments();
                 break;
             case R.id.tv_use_guide:
-                toolbar.setTitle("使用说明");
+                toolbar.setTitle(getResources().getString(R.string.get_started));
                 setUpGuideFragment();
                 break;
             case R.id.tv_about:
-                toolbar.setTitle("关于");
+                toolbar.setTitle(getResources().getString(R.string.about));
                 setUpAboutFragment();
                 break;
         }

@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
+
+import xiaofan.insdownloader.R;
 import xiaofan.insdownloader.fragment.MyPicDownloadFragment;
 import xiaofan.insdownloader.fragment.MyVideoDownloadFragment;
 import xiaofan.insdownloader.utils.Utils;
@@ -46,9 +48,9 @@ public class DownloadPagerAdapter extends FragmentPagerAdapter{
   public CharSequence getPageTitle(int position) {
     switch (position){
       case 0:
-        return "图片";
+        return context.getString(R.string.m_pictures);
       case 1:
-        return "视频";
+        return context.getString(R.string.m_videos);
     }
     return super.getPageTitle(position);
   }

@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Instagram圖片下載器</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">設置</string>
+    <string name="title_activity_user_confirm">UserConfirmActivity</string>
+    <string name="title_activity_photo_view">PhotoViewActivity</string>
+    <string name="drawer_open">打開</string>
+    <string name="drawer_close">關閉</string>
+    <string name="my_download">我的下載</string>
+    <string name="get_started">使用說明</string>
+    <string name="about">關於</string>
+    <string name="share_to">分享到</string>
+    <string name="title_activity_add_download">AddDownloadActivity</string>
+    <string name="about_intro_content">一款简单、纯净的Ins下载器 \n Author Ins:xiaofans</string>
+    <string name="new_download">添加下載</string>
+    <string name="add_new_download_hint">請輸入從ins程序裡複製的地址</string>
+    <string name="start_download">開始下載</string>
+    <string name="p_tips">提示</string>
+    <string name="p_dwonloading">下載中....</string>
+    <string name="parse_target_url">解析下載地址...</string>
+    <string name="m_pictures">圖片</string>
+    <string name="m_videos">視頻</string>
+    <string name="download_saved_path">圖片及視頻存放路徑:</string>
+    <string name="tips_download_path_not_null">圖片地址不能為空</string>
+    <string name="tips_not_from_ins">輸入的地址不是INS程序的</string>
+</resources>

@@ -21,7 +21,7 @@ public class DownloadProgressDialog extends BaseDialogFragment{
   protected Builder build(Builder builder) {
     view = LayoutInflater.from(getActivity()).inflate(R.layout.layout_download_progress,null);
     setUpViews();
-    builder.setTitle("提示");
+    builder.setTitle(getString(R.string.p_tips));
     builder.setView(view);
     return builder;
   }
@@ -43,14 +43,14 @@ public class DownloadProgressDialog extends BaseDialogFragment{
       downloadSizeTv.setText((progressInfo.totalBytes / 1024) +"kb");
     }
     progressBar.setProgress(progressInfo.progress);
-    messageTv.setText("下载中...");
+    messageTv.setText(R.string.p_dwonloading);
   }
 
   public void enableParseLoading(){
     progressBar.setIndeterminate(true);
     downloadProgressTv.setText("");
     downloadSizeTv.setText("");
-    messageTv.setText("解析图片地址...");
+    messageTv.setText(R.string.parse_target_url);
   }
 
 

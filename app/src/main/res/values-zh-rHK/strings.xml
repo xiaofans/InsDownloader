@@ -8,14 +8,15 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <string-array name="drawer_items">
-        <item>My Download</item>
-        <item>Get Started</item>
-        <item>About</item>
-        <item>Exit</item>
-    </string-array>
-    <string name="title_activity_add_download">AddDownloadActivity</string>
-    <string name="about_intro_content">A Simple pure ins Downloader.\n Author Ins:xiaofans</string>
+    <string name="my_download">My Download</string>
+    <string name="get_started">Get Started</string>
+    <string name="about">About</string>
+
+    <string name="share_to">ShareTo</string>
+  <string name="title_activity_add_download">AddDownloadActivity</string>
+    <string name="about_intro_content">A simple pure Ins Downloader.\n Author Ins:xiaofans</string>
+    <string name="new_download">Add Download</string>
+    <string name="add_new_download_hint">Please enter the address copied from the Ins app.</string>
     <string name="start_download">start download</string>
     <string name="p_tips">tips</string>
     <string name="p_dwonloading">downloading....</string>

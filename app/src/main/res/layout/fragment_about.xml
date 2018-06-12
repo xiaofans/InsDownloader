@@ -13,6 +13,7 @@
         android:textSize="18sp"
         android:textColor="#999999"
         android:lineSpacingExtra="5dp"
+        android:gravity="center"
     />
     <TextView
         android:id="@+id/sd_path_tv"

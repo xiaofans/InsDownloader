@@ -29,7 +29,7 @@ public class AddDownloadActivity extends BaseActivity {
   private void setUpActionbar() {
     // Toolbar
     toolbar = (Toolbar) findViewById(R.id.toolbar);
-    toolbar.setTitle("添加下载");
+    toolbar.setTitle(getResources().getString(R.string.new_download));
     toolbar.setBackgroundColor(Color.argb(255, 69, 115, 153));
     toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
     setSupportActionBar(toolbar);

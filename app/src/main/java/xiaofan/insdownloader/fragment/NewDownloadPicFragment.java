@@ -55,11 +55,11 @@ public class NewDownloadPicFragment extends Fragment implements View.OnClickList
     private void startDownload() {
         String picUrl = downloadPicUrlEt.getText().toString();
         if(TextUtils.isEmpty(picUrl)){
-            Toast.makeText(getActivity(),"图片地址不能为空",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.tips_download_path_not_null,Toast.LENGTH_LONG).show();
             return;
         }
         if(!picUrl.contains(ClipBoardWordCopyer.INS_URL)){
-            Toast.makeText(getActivity(),"输入的地址不是INS程序的",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), R.string.tips_not_from_ins,Toast.LENGTH_LONG).show();
             return;
         }
         startActivity(UserConfirmActivity.newIntent(getActivity(),picUrl,true));

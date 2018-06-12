@@ -108,7 +108,7 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(path)));
         shareIntent.setType("image/jpeg");
-        context.startActivity(Intent.createChooser(shareIntent, "分享到"));
+        context.startActivity(Intent.createChooser(shareIntent, context.getResources().getString(R.string.share_to)));
     }
 
     public void setDownloadPaths(ArrayList<String> downloadPaths) {

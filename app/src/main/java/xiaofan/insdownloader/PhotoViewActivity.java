@@ -87,7 +87,7 @@ public class PhotoViewActivity extends BaseActivity implements View.OnClickListe
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(filePath)));
         shareIntent.setType("image/jpeg");
-        startActivity(Intent.createChooser(shareIntent, "分享到"));
+        startActivity(Intent.createChooser(shareIntent, getResources().getString(R.string.share_to)));
 
     }
 }

@@ -81,7 +81,8 @@
 
         <activity
             android:name=".AddDownloadActivity"
-            android:label="@string/title_activity_add_download" >
+            android:label="@string/title_activity_add_download"
+            >
         </activity>
     </application>
 
