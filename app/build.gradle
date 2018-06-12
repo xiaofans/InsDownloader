@@ -7,9 +7,15 @@ android {
     defaultConfig {
         applicationId "xiaofan.insdownloader"
         minSdkVersion 12
-        targetSdkVersion 23
-        versionCode 4
-        versionName "1.03"
+        targetSdkVersion 26
+        versionCode 6
+        versionName "1.0.2"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
     buildTypes {
         release {

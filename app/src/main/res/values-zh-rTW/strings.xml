@@ -23,4 +23,7 @@
     <string name="download_saved_path">圖片及視頻存放路徑:</string>
     <string name="tips_download_path_not_null">圖片地址不能為空</string>
     <string name="tips_not_from_ins">輸入的地址不是INS程序的</string>
+    <string name="ug_step1">1.選擇圖片下方的更多</string>
+    <string name="ug_step2">2.點擊複製鏈接</string>
+    <string name="ug_step3">3.彈出下載器，點擊下載</string>
 </resources>

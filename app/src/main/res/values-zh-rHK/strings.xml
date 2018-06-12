@@ -26,4 +26,7 @@
     <string name="download_saved_path">Download saved path:</string>
     <string name="tips_download_path_not_null">Download path can not be null</string>
     <string name="tips_not_from_ins">Input address is not from Ins</string>
+    <string name="ug_step1">1.Click the button on the right</string>
+    <string name="ug_step2">2.Then click copy link</string>
+    <string name="ug_step3">3.The downloader will show,enjoy.</string>
 </resources>

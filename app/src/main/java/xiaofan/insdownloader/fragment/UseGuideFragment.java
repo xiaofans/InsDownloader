@@ -40,9 +40,9 @@ public class UseGuideFragment extends Fragment {
     private void setUpViews(View view) {
         stickyList = (StickyListHeadersListView) view.findViewById(R.id.list);
         steps = new ArrayList<String>();
-        steps.add("1.选择图片下方的更多");
-        steps.add("2.点击复制链接");
-        steps.add("3.此时会弹出INS下载器,选择下载");
+        steps.add(getString(R.string.ug_step1));
+        steps.add(getString(R.string.ug_step2));
+        steps.add(getString(R.string.ug_step3));
         guideAdapter = new GuideAdapter(steps,getActivity());
         stickyList.setAdapter(guideAdapter);
     }
