@@ -19,4 +19,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="title_activity_splash">SplashActivity</string>
   <string name="title_activity_add_download">AddDownloadActivity</string>
+    <string name="about_intro_content">文艺青年必备神器 by xiaofans  email:ttbzyzy@163.com  交流群:549986022</string>
 </resources>

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 /**
  * Created by zhaoyu on 2014/12/15.
  */
-public class FitImageView extends ImageView {
+public class FitImageView extends android.support.v7.widget.AppCompatImageView {
 
     public FitImageView(Context context) {
         super(context);
